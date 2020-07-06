@@ -1,6 +1,7 @@
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc.Versioning;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
@@ -29,6 +30,8 @@ namespace DotNetCoreApiVersion
                 x.AssumeDefaultVersionWhenUnspecified = true; 
                 // Exibe no header a versão da API
                 x.ReportApiVersions = true;
+                // Especifica que a versão será utilizada no header
+                x.ApiVersionReader = new HeaderApiVersionReader("x-api-version");
             });
         }
 
